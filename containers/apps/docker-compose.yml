@@ -1,0 +1,47 @@
+
+services:
+
+  codeset-authoring-tool-db:
+    image: postgres:17.2-alpine
+    networks:
+      - codeset-authoring-tool-${COMPOSE_PROFILES}
+    container_name: codeset-authoring-tool-db-${COMPOSE_PROFILES}
+    profiles: ["dev", "test", "prod"]
+    ports:
+      - "5430:5432"
+    healthcheck:
+      # test: ["CMD-SHELL", "pg_isready", "-q", "-d", "{YOUR_DATABASE_NAME}", "-U", "{YOUR_DATABASE_USERNAME}"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 80s
+    volumes:
+      - ./${COMPOSE_PROFILES}/data/codeset-authoring-tool-db/:/var/lib/postgresql/data
+    env_file:
+      - ./${COMPOSE_PROFILES}/env/env
+    restart: always
+
+  codeset-authoring-tool:
+    image: nist775hit/codeset-authoring-tool-${COMPOSE_PROFILES}:latest
+    networks:
+      - codeset-authoring-tool-${COMPOSE_PROFILES}
+    container_name: codeset-authoring-tool-${COMPOSE_PROFILES}
+    profiles: ["dev", "test", "prod"]
+    expose:
+      - "9006"
+    ports:
+      - "${CODESET_AUTHORING_TOOL_PORT:-1001}:9006"
+    depends_on:
+      - codeset-authoring-tool-db
+    env_file:
+      - ./${COMPOSE_PROFILES}/env/.env
+    links:
+      - codeset-authoring-tool-db:codeset-authoring-tool-db
+    volumes:
+      - ./${COMPOSE_PROFILES}/data/codeset-authoring-tool/logs/:/var/log/codeset-authoring-tool/
+
+networks:
+  codeset-authoring-tool-dev:
+    name: codeset-authoring-tool-dev
+  codeset-authoring-tool-prod:
+    name: codeset-authoring-tool-prod
