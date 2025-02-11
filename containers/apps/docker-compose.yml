@@ -18,7 +18,7 @@ services:
     volumes:
       - ./${COMPOSE_PROFILES}/data/codeset-authoring-tool-db/:/var/lib/postgresql/data
     env_file:
-      - ./${COMPOSE_PROFILES}/env/env
+      - ./${COMPOSE_PROFILES}/env/.env
     restart: always
 
   codeset-authoring-tool:
