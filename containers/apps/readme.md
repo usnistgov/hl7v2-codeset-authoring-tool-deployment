@@ -1,18 +1,18 @@
 # Environment Configuration
 
-To set up the environment for the application, create a `.env` file in the appropriate folder based on the environment needs. Use `containers/apps/prod/env` for production and `containers/apps/dev/env` for development. This file will contain the necessary environment variables required for the application to run.
+To set up the environment for the application, create a `deployment.env` file in the appropriate folder based on the environment needs. Use `containers/apps/prod/env` for production and `containers/apps/dev/env` for development. This file will contain the necessary environment variables required for the application to run.
 
-## Steps to Create the `.env` File
+## Steps to Create the `deployment.env` File
 
 1. Navigate to the appropriate folder:
     - For production: `containers/apps/prod/env`
     - For development: `containers/apps/dev/env`
-2. Create a new file named `.env`.
-3. Add the required environment variables to the `.env` file.
+2. Create a new file named `deployment.env`.
+3. Add the required environment variables to the `deployment.env` file.
 
-## Example of a `.env` File
+## Example of a `deployment.env` File
 
-Below is an example of what the `.env` file might look like:
+Below is an example of what the `deployment.env` file might look like:
 
 ```plaintext
 # Database configuration
@@ -29,5 +29,5 @@ Make sure to replace the placeholder values with the actual values for your envi
 
 ## Important Notes
 
-- Ensure that the `.env` file is not committed to version control to avoid exposing sensitive information.
+- Ensure that the `deployment.env` file is not committed to version control to avoid exposing sensitive information.
 
