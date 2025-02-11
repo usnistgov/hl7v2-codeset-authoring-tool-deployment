@@ -30,7 +30,7 @@ services:
     expose:
       - "9006"
     ports:
-      - "${CODESET_AUTHORING_TOOL_PORT:-1001}:9006"
+      - "${CODESET_AUTHORING_TOOL_PORT:-1001}:8080"
     depends_on:
       - codeset-authoring-tool-db
     env_file:
