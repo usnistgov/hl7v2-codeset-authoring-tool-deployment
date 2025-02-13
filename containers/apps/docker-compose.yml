@@ -28,7 +28,7 @@ services:
     container_name: codeset-authoring-tool-${COMPOSE_PROFILES}
     profiles: ["dev", "test", "prod"]
     expose:
-      - "9006"
+      - "8090"
     ports:
       - "${CODESET_AUTHORING_TOOL_PORT:-1001}:8080"
     depends_on:
