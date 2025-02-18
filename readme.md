@@ -23,6 +23,11 @@ POSTGRES_DB=example-db
 POSTGRES_URL=jdbc:postgresql://example-db-url:5432/example-db
 ADMIN_USER_PASSWORD=admin-password
 JWT_SECRET=jwt-secret
+ADMIN_EMAIL=admin@email.com
+EMAIL_FROM=from@email.com
+EMAIL_HOST=smtp.host
+EMAIL_PROTOCOL=smtp
+SMTP_PORT=25
 ```
 
 Make sure to replace the placeholder values with the actual values for your environment.
